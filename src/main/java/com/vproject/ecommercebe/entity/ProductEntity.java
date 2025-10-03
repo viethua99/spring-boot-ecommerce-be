@@ -9,21 +9,17 @@ import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 @Entity(name = "categories")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class CategoryEntity {
+public class ProductEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long categoryId;
+    private Long productId;
 
     @NotBlank
-    @Size(min = 5, message = "Category name must contain atleast 5 characters")
-    private String categoryName;
-//
-//    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
-//    private List<Product> products;
+    @Size(min = 5, message = "Product name must contain atleast 5 characters")
+    private String productName;
 }
 
