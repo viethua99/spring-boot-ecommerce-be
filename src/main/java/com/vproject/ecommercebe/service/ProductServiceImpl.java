@@ -5,11 +5,13 @@ import com.vproject.ecommercebe.payload.ProductRequest;
 import com.vproject.ecommercebe.payload.ProductResponse;
 import com.vproject.ecommercebe.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+@Service
 public class ProductServiceImpl implements ProductService {
     @Autowired
     private ProductRepository productRepository;
