@@ -1,36 +1,33 @@
 package com.vproject.ecommercebe.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.vproject.ecommercebe.payload.UserRole;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-@Entity(name = "products")
+@Entity(name = "users")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProductEntity {
+public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    private String firstName;
+    private String lastName;
+    private String email;
+    private String phone;
+    private UserRole userRole = UserRole.CUSTOMER;
 
-    private String description;
-
-    private BigDecimal price;
-    private Integer stockQuantity;
-    private String category;
-    private String imageUrl;
-    private Boolean active = true;
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "address_id", referencedColumnName = "id")
+    private AddressEntity address;
 
     @CreationTimestamp
     private LocalDateTime createdAt;
@@ -38,4 +35,3 @@ public class ProductEntity {
     @UpdateTimestamp
     private LocalDateTime updatedAt;
 }
-
