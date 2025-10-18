@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://ep-broad-bush-adlqz2a7-pooler.c-2.us-east-1.aws.neon.tech/product?sslmode=require&channel_binding=require
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+server:
+  port: 8081
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
