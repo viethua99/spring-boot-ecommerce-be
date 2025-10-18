@@ -26,7 +26,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Optional<UserResponse> fetchUser(Long id) {
+    public Optional<UserResponse> fetchUser(String id) {
         return userRepository.findById(id)
                 .map(this::mapToUserResponse);
     }
@@ -39,7 +39,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean updateUser(Long id, UserRequest updatedUserRequest) {
+    public boolean updateUser(String id, UserRequest updatedUserRequest) {
         return userRepository.findById(id)
                 .map(existingUser -> {
                     updateUserFromRequest(existingUser, updatedUserRequest);

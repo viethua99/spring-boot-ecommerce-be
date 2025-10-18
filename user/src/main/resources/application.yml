@@ -1,16 +1,10 @@
 spring:
   application:
     name: user-service
-  h2:
-    console:
-      enabled: true
-  datasource:
-    url: jdbc:h2:mem:test
-  jpa:
-    show-sql: true
-    hibernate:
-      ddl-auto: create
+  config:
+    import: optional:configserver:http://localhost:8888
 
-server:
-  port: 8082
-
+logging:
+  level:
+    root: INFO
+    com.vproject.user: TRACE

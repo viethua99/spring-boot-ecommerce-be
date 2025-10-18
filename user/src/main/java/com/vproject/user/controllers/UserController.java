@@ -3,6 +3,7 @@ package com.vproject.user.controllers;
 import com.vproject.user.dto.UserRequest;
 import com.vproject.user.dto.UserResponse;
 import com.vproject.user.services.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/users")
+@Slf4j
 public class UserController {
     @Autowired
     private UserService userService;
@@ -22,7 +24,7 @@ public class UserController {
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<UserResponse> getUser(@PathVariable Long id) {
+    public ResponseEntity<UserResponse> getUser(@PathVariable String id) {
         return userService.fetchUser(id)
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
@@ -35,7 +37,7 @@ public class UserController {
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<String> updateUser(@PathVariable Long id,
+    public ResponseEntity<String> updateUser(@PathVariable String id,
                                              @RequestBody UserRequest updateUserRequestR){
         boolean updated = userService.updateUser(id, updateUserRequestR);
         if (updated)
