@@ -3,3 +3,8 @@ spring:
     name: user-service
   config:
     import: optional:configserver:http://localhost:8888
+
+logging:
+  level:
+    root: INFO
+    com.vproject.user: TRACE

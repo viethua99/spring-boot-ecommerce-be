@@ -39,6 +39,13 @@ services:
     networks:
       - backend
     restart: unless-stopped
+  zipkin:
+    image: openzipkin/zipkin
+    container_name: zipkin
+    ports:
+      - "9411:9411"
+    networks:
+      - backend
 networks:
   backend:
     driver: bridge

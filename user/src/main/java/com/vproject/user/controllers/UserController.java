@@ -3,6 +3,7 @@ package com.vproject.user.controllers;
 import com.vproject.user.dto.UserRequest;
 import com.vproject.user.dto.UserResponse;
 import com.vproject.user.services.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/users")
+@Slf4j
 public class UserController {
     @Autowired
     private UserService userService;
